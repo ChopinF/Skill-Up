@@ -1,0 +1,33 @@
+@model platform.Models.Coaches.Coach
+
+@{
+    ViewData["Title"] = "Book a Coaching Session";
+    if (!User.Identity.IsAuthenticated)
+    {
+        <script>
+            window.location.href = '@Url.Action("Login", "Account")';
+        </script>
+    }
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Book a Coaching Session</h2>
+
+    <div class="alert alert-info mt-3" role="alert">
+        <p>Please select the date for your session with the coach and submit your booking request.</p>
+    </div>
+
+    <form asp-action="BookSession" method="post">
+        <input type="hidden" asp-for="CoachId" value="@Model.CoachId" />
+
+        <div class="form-group mb-3">
+            <label for="Date" class="form-label">Select Date</label>
+            <input type="datetime-local" id="Date" name="date" class="form-control" required />
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Submit Booking Request</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>

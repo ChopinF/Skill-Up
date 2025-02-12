@@ -1,0 +1,72 @@
+@model IEnumerable<platform.Models.Coaches.Booking>
+
+@{
+    ViewData["Title"] = "Coach Dashboard";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Coach Dashboard - Booking Requests</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="alert alert-info mt-3">No booking requests at the moment.</p>
+    }
+    else
+    {
+        <table class="table table-striped table-bordered mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User Name</th>
+                    <th>Session Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var booking in Model)
+                {
+                    <tr>
+                        <td>@booking.User.FirstName @booking.User.LastName</td>
+                        <td>@booking.Date.ToString("f")</td>
+                        <td>
+                            @if (booking.IsConfirmed)
+                            {
+                                <span class="badge badge-success">Confirmed</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Pending</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                @if (!booking.IsConfirmed)
+                                {
+                                    <form asp-action="DashboardCoachesApprove" method="post" class="mr-2">
+                                        <input type="hidden" name="coachId" value="@booking.CoachId" />
+                                        <input type="hidden" name="userId" value="@booking.UserId" />
+                                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                    </form>
+
+                                    <form asp-action="DashboardCoachesReject" method="post" class="mr-2">
+                                        <input type="hidden" name="coachId" value="@booking.CoachId" />
+                                        <input type="hidden" name="userId" value="@booking.UserId" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="DashboardCoachesReject" method="post" class="mr-2">
+                                        <input type="hidden" name="coachId" value="@booking.CoachId" />
+                                        <input type="hidden" name="userId" value="@booking.UserId" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

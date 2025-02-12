@@ -1,0 +1,69 @@
+@model platform.Models.Courses.DashboardCoursesViewModel
+
+@{
+    ViewData["Title"] = "Dashboard Courses";
+}
+
+<div class="container">
+    <h2 class="text-center my-5">Your Dashboard</h2>
+
+    <!-- Bought Courses Section -->
+    <div class="mb-5">
+        <h3 class="text-center mb-4">Bought Courses</h3>
+        <div class="row">
+            @if (Model.BoughtCourses != null && Model.BoughtCourses.Any())
+            {
+                foreach (var course in Model.BoughtCourses)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@course.Title</h5>
+                                <p class="card-text">@course.Description</p>
+                                <p class="card-text"><strong>Price:</strong> @course.Price</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p>No courses purchased yet.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Owned Courses Section -->
+    <div>
+        <h3 class="text-center mb-4">Owned Courses</h3>
+        <div class="row">
+            @if (Model.OwnedCourses != null && Model.OwnedCourses.Any())
+            {
+                foreach (var course in Model.OwnedCourses)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@course.Title</h5>
+                                <p class="card-text">@course.Description</p>
+                                <p class="card-text"><strong>Price:</strong> @course.Price</p>
+                                <a href="@Url.Content($"~/{course.Path}")" class="btn btn-success w-100" target="_blank">
+                                    Start Learning
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p>No courses created yet.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

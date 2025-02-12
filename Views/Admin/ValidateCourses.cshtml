@@ -1,0 +1,38 @@
+@model IEnumerable<platform.Models.Courses.PendingCourse>
+
+@{
+    ViewBag.Title = "Validate Courses";
+}
+
+<h2>Validate Courses</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.Description</td>
+                <td>@course.Price</td>
+                <td>@course.Genre</td>
+                <td>
+                    <form method="post" asp-action="ApproveCourse" asp-route-id="@course.PendingCourseId ">
+                        <button type="submit">Approve</button>
+                    </form>
+                    <form method="post" asp-action="RejectCourse" asp-route-id="@course.PendingCourseId ">
+                        <button type="submit">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+@model platform.Models.Courses.Course
+
+@{
+    ViewData["Title"] = "Purchase Confirmation";
+}
+
+<div class="container mt-5">
+    <div class="card text-center">
+        <div class="card-header bg-success text-white">
+            <h2>Purchase Confirmation</h2>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">@Model.Title</h4>
+            <p class="card-text">@Model.Description</p>
+            <p class="card-text"><strong>Price Paid:</strong> $@Model.Price</p>
+            
+            <div class="alert alert-success mt-3">
+                Your purchase was successful! Enjoy your course.
+            </div>
+            
+            <a href="@Url.Action("Index", "Courses")" class="btn btn-primary mt-3">Back to Courses</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+@model IEnumerable<platform.Models.Coaches.Booking>
+
+@{
+    ViewData["Title"] = "User Dashboard - Pending Bookings";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Your Pending Bookings</h2>
+
+    @if (!Model.Any())
+    {
+        <p class="alert alert-info mt-3">No bookings found.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover mt-3">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Coach Name</th>
+                        <th>Session Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.User.FirstName @booking.User.LastName</td>
+                            <td>@booking.Date.ToString("f")</td>
+                            <td>
+                                <span class="badge badge-warning">Pending</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

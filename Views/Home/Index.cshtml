@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center my-5">
+    <h1 class="display-4">Welcome to SkillUp</h1>
+</div>
+
+<div class="container my-5 position-relative">
+    <div class="card mission-card">
+        <div class="card-body">
+            <h2 class="card-title">Our Mission</h2>
+            <p class="card-text">
+                We strive to provide quality learning and coaching experiences that help individuals achieve their goals.
+                Join us and be part of a thriving community of learners.
+            </p>
+            <p class="card-text">
+                At SkillUp, our mission is to empower learners from all walks of life by providing top-quality educational resources and coaching.
+                We believe that everyone deserves access to knowledge and guidance that helps them achieve personal and professional goals.
+            </p>
+            <p class="card-text">
+                Our platform is designed to foster a supportive community where you can learn, grow, and thrive alongside like-minded individuals.
+                With innovative learning tools and expert instructors, we are dedicated to making your learning experience enriching and enjoyable.
+            </p>
+        </div>
+    </div>
+
+    <div class="card policies-card">
+        <div class="card-body">
+            <h2 class="card-title">Our Policies</h2>
+            <p>
+                Your privacy and safety are important to us. We are committed to maintaining a secure and transparent environment for all learners and coaches.
+                Our platform adheres to stringent data protection guidelines and ethical practices to ensure your information is safeguarded.
+            </p>
+            <p>
+                We also foster a respectful and inclusive learning community. All members of our platform are encouraged to engage in positive, collaborative interactions.
+                To learn more about our principles and user guidelines, please read our full policy documentation.
+            </p>
+            <a href="/Home/Policies" class="btn btn-primary mt-3">Read Our Policies</a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h2 class="text-center">What We Offer</h2>
+    <p class="text-center">
+        Our platform offers a comprehensive range of services designed to meet the needs of every learner. From online courses to personalized coaching,
+        we provide the tools you need to reach your learning objectives.
+    </p>
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/300x200?text=Online+Courses" class="card-img-top" alt="Online Courses">
+                <div class="card-body">
+                    <h5 class="card-title">Online Courses</h5>
+                    <p class="card-text">
+                        Explore a diverse catalog of online courses, ranging from beginner to advanced levels. Learn at your own pace and
+                        gain valuable insights from experienced instructors.
+                    </p>
+                    <a href="/Courses" class="btn btn-primary">Browse Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/300x200?text=Personalized+Coaching" class="card-img-top" alt="Personalized Coaching">
+                <div class="card-body">
+                    <h5 class="card-title">Personalized Coaching</h5>
+                    <p class="card-text">
+                        Get personalized guidance from expert coaches who understand your learning needs. From career advice to skill development,
+                        our coaches are here to help.
+                    </p>
+                    <a href="/Coaches" class="btn btn-primary">Meet Our Coaches</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .mission-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 48%; 
+    }
+
+    .policies-card {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 48%; 
+    }
+
+    .position-relative {
+        position: relative;
+        height: 600px; 
+    }
+</style>

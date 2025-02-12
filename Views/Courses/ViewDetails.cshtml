@@ -1,0 +1,39 @@
+@model platform.Models.Courses.Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm p-4 mb-4">
+                <h2 class="text-center mb-4">@Model.Title</h2>
+                <div class="mb-3">
+                    <p><strong>Description:</strong> @Model.Description</p>
+                </div>
+                <div class="mb-3">
+                    <p><strong>Price:</strong> @Model.Price</p>
+                </div>
+                <div class="mb-3">
+                    <p><strong>Genre:</strong> @Model.Genre</p>
+                </div>
+                <div class="mb-3">
+                    <p><strong>Instructor:</strong> @Model.User.UserName</p>
+                </div>
+
+                <div class="text-center">
+                    <a href="@Url.Action("Index", "Courses")" class="btn btn-secondary">Back to Courses</a>
+                </div>
+
+                @using(Html.BeginForm("Purchase", "Courses", FormMethod.Post))
+                {
+                    @Html.Hidden("courseId", Model.CourseId)
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-success">Purchase Course</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+@model IEnumerable<platform.Models.Coaches.PendingCoach>
+
+@{
+    ViewBag.Title = "Validate Coaches";
+}
+
+<h2>Validate Coaches</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Phone Number</th>
+            <th>Bio</th>
+            <th>City</th>
+            <th>Level</th>
+            <th>Expertise Area</th>
+            <th>Profile Picture</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coach in Model)
+        {
+            <tr>
+                <td>@coach.PhoneNumber</td>
+                <td>@coach.Bio</td>
+                <td>@coach.City</td>
+                <td>@coach.Level</td>
+                <td>@coach.ExpertiseArea</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(coach.PicturePath))
+                    {
+                        <img src="~/@coach.PicturePath" alt="Profile Picture" style="width: 100px; height: 100px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <span>No picture</span>
+                    }
+                </td>
+                <td>
+                    <form method="post" asp-action="ApproveCoach" asp-route-id="@coach.PendingCoachId">
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                    <form method="post" asp-action="RejectCoach" asp-route-id="@coach.PendingCoachId">
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

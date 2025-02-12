@@ -1,0 +1,67 @@
+@model platform.Models.Courses.CourseAddForm
+
+@{
+    ViewBag.Title = "Add Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">@ViewBag.Message</h2>
+
+            @using (Html.BeginForm("AddCourse", "Courses", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card p-4 shadow-sm">
+                    <h3 class="text-center mb-4">Add Course</h3>
+
+                    <!-- Title Field -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Title, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Course Title" })
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Price Field -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Price, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder = "Course Price" })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Description Field -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Description, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Course Description" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Genre Dropdown -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Genre, new { @class = "form-label" })
+                        @Html.DropDownListFor(model => model.Genre, 
+                            new SelectList(Enum.GetValues(typeof(platform.Models.Courses.Genre))), 
+                            "Select Genre", 
+                            new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                        <label for="FileUpload" class="form-label">Course PDF</label>
+                        <input type="file" name="File" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <input type="submit" value="Add Course" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

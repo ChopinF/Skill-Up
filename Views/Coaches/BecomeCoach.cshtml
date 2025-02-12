@@ -1,0 +1,72 @@
+@model platform.Models.Coaches.BecomeCoachForm
+@{
+    ViewBag.Title = "Become Coach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (!User.Identity.IsAuthenticated)
+    {
+        <script>
+            window.location.href = '@Url.Action("Login", "Account")';
+        </script>
+    }
+}
+
+<h4>@ViewBag.Message</h4>
+
+@using (Html.BeginForm("BecomeCoach", "Coaches", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h2>Become Coach</h2>
+
+        <div>
+            @Html.LabelFor(model => model.PhoneNumber, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", placeholder = "Enter your phone number" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.PicturePath, new { @class = "form-label" })
+            <input type="file" name="PicturePath" class="form-control" />
+            @Html.ValidationMessageFor(model => model.PicturePath, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Bio, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Bio, new { @class = "form-control", placeholder = "Tell us about yourself" })
+            @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.City, new { @class = "form-label" })
+            @Html.DropDownListFor(model => model.City, 
+                new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.Cities))), 
+                "Select City", 
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Level, new { @class = "form-label" })
+            @Html.DropDownListFor(model => model.Level, 
+                new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.Level))), 
+                "Select Level", 
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.ExpertiseArea, new { @class = "form-label" })
+            @Html.DropDownListFor(model => model.ExpertiseArea, 
+                new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.ExpertiseArea))), 
+                "Select Expertise Area", 
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ExpertiseArea, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <input type="submit" value="Become Coach" class="btn btn-primary" />
+        </div>
+    </div>
+}

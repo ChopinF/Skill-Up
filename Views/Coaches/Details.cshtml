@@ -1,0 +1,29 @@
+@model platform.Models.Coaches.Coach
+
+@{
+    ViewData["Title"] = "Coach Details";
+}
+
+<div class="container mt-5">
+    <h2>Coach Details</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/@Model.PicturePath" alt="Coach Picture" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+        </div>
+
+        <div class="col-md-8">
+            <h3>@Model.User.FirstName @Model.User.LastName</h3>
+            <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+            <p><strong>City:</strong> @Model.City</p>
+            <p><strong>Level:</strong> @Model.Level</p>
+            <p><strong>Expertise Area:</strong> @Model.ExpertiseArea</p>
+            <p><strong>Bio:</strong> @Model.Bio</p>
+
+            <a href="@Url.Action("Index", "Coaches")" class="btn btn-secondary mt-3">Back to Coaches List</a>
+        </div>
+
+        <a href="@Url.Action("BookSession", "Coaches")?coachId=@Model.CoachId" 
+        class="btn btn-success mt-3">Book a Session</a>
+
+    </div>
+</div>

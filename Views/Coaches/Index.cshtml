@@ -1,0 +1,73 @@
+@model IEnumerable<platform.Models.Coaches.Coach>
+
+@{
+    ViewData["Title"] = "Coaches";
+}
+
+<div class="container mt-4">
+    <!-- Become a Coach Button Section -->
+    @if (TempData["IsCoach"] != null && !(bool)TempData["IsCoach"])
+    {
+        <form asp-action="BecomeCoach" asp-controller="Coaches" method="post" class="text-center mb-4">
+            <button type="submit" class="btn btn-success">Become a Coach</button>
+        </form>
+    }
+
+    <div class="row">
+        <!-- Left Filter Div -->
+        <div class="col-md-3 mb-4">
+            <h4 class="text-center">Filter Coaches</h4>
+
+            <form method="get" asp-action="Index">
+                <div class="form-group mb-3">
+                    <label for="City" class="form-label">City</label>
+                    @Html.DropDownList("city", 
+                        new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.Cities))), 
+                        "Select City", 
+                        new { @class = "form-control" })
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Level" class="form-label">Level</label>
+                    @Html.DropDownList("level", 
+                        new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.Level))), 
+                        "Select Level", 
+                        new { @class = "form-control" })
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="ExpertiseArea" class="form-label">Expertise Area</label>
+                    @Html.DropDownList("expertise", 
+                        new SelectList(Enum.GetValues(typeof(platform.Models.Coaches.ExpertiseArea))), 
+                        "Select Expertise Area", 
+                        new { @class = "form-control" })
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+            </form>
+        </div>
+
+        <!-- Right Coach Cards Div -->
+        <div class="col-md-9">
+            <h2 class="text-center mb-4">Coaches List</h2>
+            <div class="row">
+                @foreach (var coach in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="~/@coach.PicturePath" class="card-img-top" alt="Coach Image" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">@coach.User.FirstName @coach.User.LastName</h5>
+                                <p class="card-text"><strong>City:</strong> @coach.City</p>
+                                <p class="card-text"><strong>Level:</strong> @coach.Level</p>
+                                <p class="card-text"><strong>Expertise:</strong> @coach.ExpertiseArea</p>
+                                <p class="card-text">@coach.Bio</p>
+                                <a href="@Url.Action("Details", "Coaches", new { id = coach.CoachId })" class="btn btn-primary w-100">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
