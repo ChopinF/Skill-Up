@@ -17,6 +17,5 @@ namespace platform.Models.Coaches
         Oradea,
         Arad,
         Drobeta,
-        OnLine,
     }
 }

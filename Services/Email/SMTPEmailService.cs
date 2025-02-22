@@ -9,7 +9,7 @@ namespace platform.Services.Email
         private string _smtpAddress = "smtp.mail.yahoo.com";
         private int _portNumber = 587;
         private string _emailFrom = "lazaralexandru14@yahoo.com";
-        private string _password = "pcukkvyauemvcnpc";
+        private string _password = "notthisone";
 
         public SMTPEmailService()
         {

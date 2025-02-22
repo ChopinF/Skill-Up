@@ -21,6 +21,9 @@
                                 <h5 class="card-title">@course.Title</h5>
                                 <p class="card-text">@course.Description</p>
                                 <p class="card-text"><strong>Price:</strong> @course.Price</p>
+                                <a href="@Url.Content($"~/{course.Path}")" class="btn btn-success w-100" target="_blank">
+                                    Start Learning
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +53,7 @@
                                 <p class="card-text">@course.Description</p>
                                 <p class="card-text"><strong>Price:</strong> @course.Price</p>
                                 <a href="@Url.Content($"~/{course.Path}")" class="btn btn-success w-100" target="_blank">
-                                    Start Learning
+                                   See content 
                                 </a>
                             </div>
                         </div>

@@ -2,3 +2,5 @@ Migrations/
 bin/
 obj/
 platform.db
+exp.txt
+platform.*
