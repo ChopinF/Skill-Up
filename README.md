@@ -6,11 +6,11 @@ This is a .NET 9.0 web application for managing coaches, courses, and bookings. 
 
 ## Features
 
-- User authentication (Login, Registration, Forgot Password)
-- Coach management (Apply to become a coach, Book sessions)
-- Course management (Add courses, Purchase courses)
-- Admin dashboard (Validate coaches and courses)
-- Email notifications using SMTP
+- **User authentication** (Login, Registration, Forgot Password)
+- **Coach management** (Apply to become a coach, Book sessions)
+- **Course management** (Add courses, Purchase courses)
+- **Admin dashboard** (Validate coaches and courses)
+- **Email notifications** using SMTP
 
 ## Technologies Used
 
@@ -42,30 +42,26 @@ This is a .NET 9.0 web application for managing coaches, courses, and bookings. 
 1. **Clone the repository**
 
 ```
-sh
-   git clone <repository-url>
-   cd platform-project
+git clone <repository-url>
+cd platform-project
 ```
 
 2. **Restore dependencies**
 
 ```
-sh
-    dotnet restore
+dotnet restore
 ```
 
 3. **Apply database migrations**
 
 ```
-sh
-    dotnet ef database update
+dotnet ef database update
 ```
 
 4. **Run the application**
 
 ```
-sh
-    dotnet run
+dotnet run
 ```
 
 5. Open in browser
