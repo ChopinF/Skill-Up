@@ -82,7 +82,7 @@ namespace platform
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            var roles = new[] { "Admin", "User", "Coach" };
+            var roles = new[] { "Admin", "User" };
 
             foreach (var role in roles)
             {
@@ -94,5 +94,3 @@ namespace platform
         }
     }
 }
-
-// Add services to the container.
