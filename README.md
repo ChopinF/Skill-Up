@@ -14,7 +14,7 @@ This is a .NET 9.0 web application for managing coaches, courses, and bookings. 
 
 ## Technologies Used
 
-- **Backend:** ASP.NET Core 9.0, Entity Framework Core
+- **Backend:** C# ASP.NET Core 9.0, Entity Framework Core 
 - **Frontend:** Razor Views (.cshtml), Bootstrap
 - **Database:** SQLite
 - **Authentication:** Identity Framework
